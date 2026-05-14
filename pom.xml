@@ -17,7 +17,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>rw.plantmarketplace</groupId>
+    <groupId>rw.ntaganira</groupId>
     <artifactId>plant-marketplace</artifactId>
     <version>1.0.0</version>
     <name>plant-marketplace</name>
