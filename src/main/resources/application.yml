@@ -1,0 +1,50 @@
+# Developed by Heritier Ntaganira
+# NIHO TECHNOLOGIES LTD
+
+spring:
+
+  application:
+    name: plant-marketplace
+
+  datasource:
+    url: jdbc:h2:mem:plantdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
+  thymeleaf:
+    cache: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+server:
+  port: 8080
+
+jwt:
+  secret: CHANGE_THIS_SECRET_KEY
+  expiration: 86400000
+
+minio:
+  url: http://localhost:9000
+  access-key: minioadmin
+  secret-key: minioadmin
+  bucket-products: products
+  bucket-vendors: vendors
+  bucket-profiles: profiles
