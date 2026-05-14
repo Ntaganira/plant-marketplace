@@ -1,0 +1,27 @@
+:root {
+
+    --primary-green: #2E7D32;
+
+    --light-green: #66BB6A;
+
+    --background-green: #F1F8E9;
+
+    --dark-green: #1B5E20;
+}
+
+body {
+
+    background-color: var(--background-green);
+}
+
+.text-success {
+
+    color: var(--primary-green) !important;
+}
+
+.btn-success {
+
+    background-color: var(--primary-green);
+
+    border-color: var(--primary-green);
+}

@@ -1,0 +1,50 @@
+<div class="vertical-menu"
+     th:fragment="sidebar">
+
+    <div data-simplebar
+         class="h-100">
+
+        <div id="sidebar-menu">
+
+            <ul class="metismenu list-unstyled"
+                id="side-menu">
+
+                <li class="menu-title">
+                    Menu
+                </li>
+
+                <li>
+                    <a th:href="@{/dashboard}">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/products}">
+                        <i class="mdi mdi-flower-outline"></i>
+                        <span>Products</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/vendors}">
+                        <i class="mdi mdi-store-outline"></i>
+                        <span>Vendors</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/orders}">
+                        <i class="mdi mdi-cart-outline"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
