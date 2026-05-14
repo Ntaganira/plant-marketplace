@@ -16,12 +16,12 @@ import java.util.UUID;
 
 /**
  * --------------------------------------------------------------------
- * Project      : Rwanda Plant Marketplace
- * File         : ProductServiceImpl.java
- * Author       : Heritier Ntaganira
- * Company      : NIHO TECHNOLOGIES LTD
+ * Project : Rwanda Plant Marketplace
+ * File : ProductServiceImpl.java
+ * Author : Heritier Ntaganira
+ * Company : NIHO TECHNOLOGIES LTD
  * Created Date : 2026-05-14
- * Description  : Implements product business operations
+ * Description : Implements product business operations
  * --------------------------------------------------------------------
  */
 
@@ -29,125 +29,111 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private final ProductRepository productRepository;
+        private final ProductRepository productRepository;
 
-    private final CategoryRepository categoryRepository;
+        private final CategoryRepository categoryRepository;
 
-    @Override
-    public ProductResponse createProduct(ProductRequest request) {
+        @Override
+        public ProductResponse createProduct(ProductRequest request) {
 
-        Category category = categoryRepository
-                .findById(request.getCategoryId())
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Category not found"
-                        ));
+                Category category = categoryRepository
+                                .findById(request.getCategoryId())
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Category not found"));
 
-        Product product = new Product();
+                Product product = new Product();
 
-        product.setName(request.getName());
+                product.setName(request.getName());
 
-        product.setSlug(
-                request.getName()
-                        .toLowerCase()
-                        .replace(" ", "-")
-                        + "-" +
-                        UUID.randomUUID()
-                                .toString()
-                                .substring(0, 5)
-        );
+                product.setThumbnailUrl(
+                                request.getThumbnailUrl());
 
-        product.setDescription(request.getDescription());
+                product.setSlug(
+                                request.getName()
+                                                .toLowerCase()
+                                                .replace(" ", "-")
+                                                + "-" +
+                                                UUID.randomUUID()
+                                                                .toString()
+                                                                .substring(0, 5));
 
-        product.setShortDescription(
-                request.getShortDescription()
-        );
+                product.setDescription(request.getDescription());
 
-        product.setPrice(request.getPrice());
+                product.setShortDescription(
+                                request.getShortDescription());
 
-        product.setDiscountPrice(
-                request.getDiscountPrice()
-        );
+                product.setPrice(request.getPrice());
 
-        product.setStockQuantity(
-                request.getStockQuantity()
-        );
+                product.setDiscountPrice(
+                                request.getDiscountPrice());
 
-        product.setCategory(category);
+                product.setStockQuantity(
+                                request.getStockQuantity());
 
-        Product savedProduct =
-                productRepository.save(product);
+                product.setCategory(category);
 
-        return mapToResponse(savedProduct);
-    }
+                Product savedProduct = productRepository.save(product);
 
-    @Override
-    public List<ProductResponse> getAllProducts() {
+                return mapToResponse(savedProduct);
+        }
 
-        return productRepository.findAll()
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
+        @Override
+        public List<ProductResponse> getAllProducts() {
 
-    @Override
-    public ProductResponse getProductBySlug(String slug) {
+                return productRepository.findAll()
+                                .stream()
+                                .map(this::mapToResponse)
+                                .toList();
+        }
 
-        Product product = productRepository
-                .findBySlug(slug)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Product not found"
-                        ));
+        @Override
+        public ProductResponse getProductBySlug(String slug) {
 
-        return mapToResponse(product);
-    }
+                Product product = productRepository
+                                .findBySlug(slug)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Product not found"));
 
-    @Override
-    public List<ProductResponse> searchProducts(
-            String keyword
-    ) {
+                return mapToResponse(product);
+        }
 
-        return productRepository
-                .findByNameContainingIgnoreCase(keyword)
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
+        @Override
+        public List<ProductResponse> searchProducts(
+                        String keyword) {
 
-    private ProductResponse mapToResponse(
-            Product product
-    ) {
+                return productRepository
+                                .findByNameContainingIgnoreCase(keyword)
+                                .stream()
+                                .map(this::mapToResponse)
+                                .toList();
+        }
 
-        return ProductResponse.builder()
-                .id(product.getId())
-                .name(product.getName())
-                .slug(product.getSlug())
-                .description(product.getDescription())
-                .shortDescription(
-                        product.getShortDescription()
-                )
-                .price(product.getPrice())
-                .discountPrice(
-                        product.getDiscountPrice()
-                )
-                .stockQuantity(
-                        product.getStockQuantity()
-                )
-                .thumbnailUrl(
-                        product.getThumbnailUrl()
-                )
-                .category(
-                        product.getCategory() != null
-                                ? product.getCategory().getName()
-                                : null
-                )
-                .vendor(
-                        product.getVendor() != null
-                                ? product.getVendor().getFirstName()
-                                : null
-                )
-                .build();
-    }
+        private ProductResponse mapToResponse(
+                        Product product) {
+
+                return ProductResponse.builder()
+                                .id(product.getId())
+                                .name(product.getName())
+                                .slug(product.getSlug())
+                                .description(product.getDescription())
+                                .shortDescription(
+                                                product.getShortDescription())
+                                .price(product.getPrice())
+                                .discountPrice(
+                                                product.getDiscountPrice())
+                                .stockQuantity(
+                                                product.getStockQuantity())
+                                .thumbnailUrl(
+                                                product.getThumbnailUrl())
+                                .category(
+                                                product.getCategory() != null
+                                                                ? product.getCategory().getName()
+                                                                : null)
+                                .vendor(
+                                                product.getVendor() != null
+                                                                ? product.getVendor().getFirstName()
+                                                                : null)
+                                .build();
+        }
 
 }

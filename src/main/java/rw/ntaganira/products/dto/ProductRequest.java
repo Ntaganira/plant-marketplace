@@ -36,4 +36,5 @@ public class ProductRequest {
 
     private Long categoryId;
 
+    private String thumbnailUrl;
 }

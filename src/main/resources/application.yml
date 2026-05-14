@@ -48,3 +48,4 @@ minio:
   bucket-products: products
   bucket-vendors: vendors
   bucket-profiles: profiles
+  bucket-banners: banners
