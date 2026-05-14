@@ -1,8 +1,17 @@
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\controller\AuthController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\AuthResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\LoginRequest.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\RegisterRequest.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\service\AuthService.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\service\impl\AuthServiceImpl.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\config\AuditingConfig.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\exception\GlobalExceptionHandler.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\PlantMarketplaceApplication.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\ApplicationSecurityConfig.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\SecurityBeansConfig.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\filter\JwtAuthenticationFilter.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\jwt\JwtService.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\service\CustomUserDetailsService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\shared\constants\AppConstants.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\shared\dto\PageResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\shared\entity\BaseEntity.java
