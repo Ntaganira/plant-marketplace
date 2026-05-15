@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main-layout}">
+
+<div layout:fragment="content">
+
+    <!-- Hero Section -->
+
+    <div class="row mb-4">
+
+        <div class="col-12">
+
+            <div class="card bg-success text-white">
+
+                <div class="card-body p-5">
+
+                    <h1 class="display-5 fw-bold">
+                        Rwanda Plant Marketplace 🌱
+                    </h1>
+
+                    <p class="lead">
+                        Buy plants, flowers, trees, pots,
+                        seeds, and gardening tools
+                        from trusted nurseries.
+                    </p>
+
+                    <form method="get" th:action="@{/products/search}">
+
+                        <div class="input-group mt-4">
+
+                            <input type="text" name="keyword" class="form-control form-control-lg"
+                                placeholder="Search plants, flowers, tools...">
+
+                            <button class="btn btn-dark btn-lg">
+
+                                Search
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Products -->
+
+    <div class="row">
+
+        <div class="col-12 mb-4">
+
+            <h3 class="fw-bold">
+                Featured Products
+            </h3>
+
+        </div>
+
+        <div class="col-xl-3 col-lg-4 col-md-6" th:each="product : ${products}">
+
+            <div class="card product-card">
+
+                <img th:src="${product.thumbnailUrl}" class="card-img-top product-image" alt="Product Image">
+
+                <div class="card-body">
+
+                    <h5 class="card-title" th:text="${product.name}">
+                    </h5>
+
+                    <p class="text-muted small" th:text="${product.category}">
+                    </p>
+
+                    <h4 class="text-success fw-bold">
+
+                        <span th:text="${product.price}">
+                        </span>
+
+                    </h4>
+
+                    <div class="d-grid gap-2 mt-3">
+
+                        <a th:href="@{/products/{slug}(slug=${product.slug})}" class="btn btn-outline-success">
+
+                            View Details
+
+                        </a>
+
+                        <button class="btn btn-success">
+
+                            Add To Cart
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</html>

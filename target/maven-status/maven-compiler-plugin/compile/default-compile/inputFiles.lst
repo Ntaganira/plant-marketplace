@@ -12,6 +12,7 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\r
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\repository\ProductRepository.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\config\AuditingConfig.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\exception\GlobalExceptionHandler.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\home\controller\HomeController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\Cart.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\CartItem.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\Order.java
@@ -20,6 +21,7 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\enums
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\utils\WhatsAppMessageBuilder.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\PlantMarketplaceApplication.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\controller\ProductController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\controller\ProductViewController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\dto\ProductRequest.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\dto\ProductResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\service\impl\ProductServiceImpl.java
@@ -46,6 +48,7 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\entity
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\enums\UserRole.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\repository\UserRepository.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\controller\VendorController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\controller\VendorStorefrontController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\dto\VendorRequest.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\dto\VendorResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\entity\Vendor.java
