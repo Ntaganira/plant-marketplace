@@ -6,15 +6,13 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\Reg
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\service\AuthService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\service\impl\AuthServiceImpl.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\carts\dto\AddToCartRequest.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\carts\entity\Cart.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\carts\entity\CartItem.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\entity\Category.java
-C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\entity\Product.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\repository\CategoryRepository.java
-C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\categories\repository\ProductRepository.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\config\AuditingConfig.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\exception\GlobalExceptionHandler.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\home\controller\HomeController.java
-C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\Cart.java
-C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\CartItem.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\Order.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\OrderItem.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\enums\OrderStatus.java
@@ -24,6 +22,8 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\con
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\controller\ProductViewController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\dto\ProductRequest.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\dto\ProductResponse.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\entity\Product.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\repository\ProductRepository.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\service\impl\ProductServiceImpl.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\service\ProductService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\ApplicationSecurityConfig.java

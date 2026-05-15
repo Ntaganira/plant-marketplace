@@ -2,6 +2,8 @@ package rw.ntaganira.shared.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -47,6 +49,7 @@ public abstract class BaseEntity {
 
     private String updatedBy;
 
+    @Enumerated(EnumType.STRING)
     private RecordStatus status = RecordStatus.ACTIVE;
 
 }
