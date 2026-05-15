@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main-layout}">
+
+<div layout:fragment="content">
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="card">
+
+                <img th:src="${product.thumbnailUrl}" class="img-fluid rounded" alt="Product Image">
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <h2 class="fw-bold" th:text="${product.name}">
+            </h2>
+
+            <p class="text-muted" th:text="${product.category}">
+            </p>
+
+            <h1 class="text-success fw-bold my-4">
+
+                <span th:text="${product.price}">
+                </span>
+
+            </h1>
+
+            <p th:text="${product.description}">
+            </p>
+
+            <div class="mt-4">
+
+                <button class="btn btn-success btn-lg">
+
+                    Add To Cart
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</html>
