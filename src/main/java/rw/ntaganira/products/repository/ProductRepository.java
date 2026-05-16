@@ -26,4 +26,5 @@ public interface ProductRepository
 
     List<Product> findByNameContainingIgnoreCase(String keyword);
 
+    long count();
 }

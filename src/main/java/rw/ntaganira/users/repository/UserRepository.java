@@ -2,6 +2,7 @@ package rw.ntaganira.users.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import rw.ntaganira.users.entity.User;
+import rw.ntaganira.users.enums.UserRole;
 
 import java.util.Optional;
 
@@ -22,4 +23,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
 
+    long countByRole(
+        UserRole role
+    );
 }

@@ -3,6 +3,7 @@ package rw.ntaganira.vendors.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import rw.ntaganira.users.entity.User;
 import rw.ntaganira.vendors.entity.Vendor;
+import rw.ntaganira.vendors.enums.VendorStatus;
 
 import java.util.Optional;
 
@@ -23,5 +24,9 @@ public interface VendorRepository
     Optional<Vendor> findBySlug(String slug);
 
     Optional<Vendor> findByOwner(User owner);
+
+    long countByVendorStatus(
+        VendorStatus vendorStatus
+    );
 
 }
