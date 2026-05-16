@@ -12,12 +12,12 @@ import rw.ntaganira.users.enums.UserRole;
 
 /**
  * --------------------------------------------------------------------
- * Project      : Rwanda Plant Marketplace
- * File         : User.java
- * Author       : Heritier Ntaganira
- * Company      : NIHO TECHNOLOGIES LTD
+ * Project : Rwanda Plant Marketplace
+ * File : User.java
+ * Author : Heritier Ntaganira
+ * Company : NIHO TECHNOLOGIES LTD
  * Created Date : 2026-05-14
- * Description  : Represents application users
+ * Description : Represents application users
  * --------------------------------------------------------------------
  */
 
@@ -47,4 +47,7 @@ public class User extends BaseEntity {
 
     private Boolean enabled = true;
 
+    private String profilePhotoUrl;
+
+    private Boolean accountNonLocked = true;
 }
