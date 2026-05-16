@@ -1,7 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
-<head th:replace="~{fragments/head :: head}"></head>
+<head th:replace="~{fragments/head :: head}">
+    <title th:text="${seo != null
+        ? seo.title
+        : 'Rwanda Plant Marketplace'}">
+    </title>
+
+    <meta name="description" th:content="${seo != null
+      ? seo.description
+      : 'Buy plants and gardening products in Rwanda'}">
+
+    <meta name="keywords" th:content="${seo != null
+      ? seo.keywords
+      : 'plants, flowers, trees, Rwanda'}">
+
+    <meta property="og:title" th:content="${seo != null
+      ? seo.title
+      : 'Rwanda Plant Marketplace'}">
+
+    <meta property="og:description" th:content="${seo != null
+      ? seo.description
+      : 'Marketplace for plants and nurseries'}">
+
+    <meta property="og:image" th:content="${seo != null
+      ? seo.image
+      : '/assets/images/logo.png'}">
+
+</head>
 
 <body data-sidebar="dark">
 

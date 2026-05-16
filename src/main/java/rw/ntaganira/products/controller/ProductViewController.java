@@ -1,12 +1,17 @@
 package rw.ntaganira.products.controller;
 
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import rw.ntaganira.products.dto.ProductFilterRequest;
+import rw.ntaganira.products.dto.ProductResponse;
 import rw.ntaganira.products.service.ProductService;
 
 /**
@@ -48,5 +53,24 @@ public class ProductViewController {
                 productService.searchProducts(keyword));
 
         return "products/list";
+    }
+
+    @GetMapping("/marketplace")
+    public String marketplace(
+            @ModelAttribute ProductFilterRequest request,
+            Model model) {
+
+        Page<ProductResponse> products = productService.searchProducts(
+                request);
+
+        model.addAttribute(
+                "products",
+                products);
+
+        model.addAttribute(
+                "request",
+                request);
+
+        return "products/marketplace";
     }
 }

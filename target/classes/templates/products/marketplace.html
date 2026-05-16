@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main-layout}">
+
+<div layout:fragment="content">
+
+    <!-- Filters -->
+
+    <div class="card mb-4">
+
+        <div class="card-body">
+
+            <form method="get" th:action="@{/marketplace}">
+
+                <div class="row">
+
+                    <!-- Keyword -->
+
+                    <div class="col-lg-4">
+
+                        <input type="text" class="form-control" name="keyword" placeholder="Search plants..."
+                            th:value="${request.keyword}">
+
+                    </div>
+
+                    <!-- Sort -->
+
+                    <div class="col-lg-3">
+
+                        <select class="form-select" name="sortBy">
+
+                            <option value="createdAt">
+                                Latest
+                            </option>
+
+                            <option value="price">
+                                Price
+                            </option>
+
+                            <option value="name">
+                                Name
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Direction -->
+
+                    <div class="col-lg-3">
+
+                        <select class="form-select" name="direction">
+
+                            <option value="DESC">
+                                Descending
+                            </option>
+
+                            <option value="ASC">
+                                Ascending
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Submit -->
+
+                    <div class="col-lg-2">
+
+                        <button class="btn btn-success w-100">
+
+                            Filter
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- Products -->
+
+    <div class="row">
+
+        <div class="col-xl-3 col-lg-4 col-md-6" th:each="product : ${products.content}">
+
+            <div class="card product-card">
+
+                <img th:src="${product.thumbnailUrl}" class="card-img-top product-image">
+
+                <div class="card-body">
+
+                    <h5 th:text="${product.name}">
+                    </h5>
+
+                    <h4 class="text-success">
+
+                        <span th:text="${product.price}">
+                        </span>
+
+                    </h4>
+
+                    <a th:href="@{/products/{slug}(slug=${product.slug})}" class="btn btn-success w-100">
+
+                        View Product
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Pagination -->
+
+    <div class="row mt-5">
+
+        <div class="col-12">
+
+            <nav>
+
+                <ul class="pagination justify-content-center">
+
+                    <!-- Previous -->
+
+                    <li class="page-item" th:classappend="${products.first}
+                        ? 'disabled'">
+
+                        <a class="page-link" th:href="@{/marketplace(
+                            page=${products.number - 1},
+                            keyword=${request.keyword}
+                           )}">
+
+                            Previous
+
+                        </a>
+
+                    </li>
+
+                    <!-- Pages -->
+
+                    <li class="page-item" th:each="i : ${#numbers.sequence(
+                            0,
+                            products.totalPages - 1
+                        )}" th:classappend="${i == products.number}
+                        ? 'active'">
+
+                        <a class="page-link" th:text="${i + 1}" th:href="@{/marketplace(
+                            page=${i},
+                            keyword=${request.keyword}
+                           )}">
+                        </a>
+
+                    </li>
+
+                    <!-- Next -->
+
+                    <li class="page-item" th:classappend="${products.last}
+                        ? 'disabled'">
+
+                        <a class="page-link" th:href="@{/marketplace(
+                            page=${products.number + 1},
+                            keyword=${request.keyword}
+                           )}">
+
+                            Next
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+</div>
+
+</html>

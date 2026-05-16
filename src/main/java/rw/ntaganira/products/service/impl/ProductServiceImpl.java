@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rw.ntaganira.categories.entity.Category;
 import rw.ntaganira.categories.repository.CategoryRepository;
+import rw.ntaganira.products.dto.ProductFilterRequest;
 import rw.ntaganira.products.dto.ProductRequest;
 import rw.ntaganira.products.dto.ProductResponse;
 import rw.ntaganira.products.entity.Product;
@@ -12,6 +13,10 @@ import rw.ntaganira.products.service.ProductService;
 import rw.ntaganira.shared.exception.BadRequestException;
 import rw.ntaganira.shared.exception.ResourceNotFoundException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import rw.ntaganira.products.dto.VendorProductRequest;
 import rw.ntaganira.users.entity.User;
@@ -247,6 +252,36 @@ public class ProductServiceImpl implements ProductService {
                 }
 
                 productRepository.delete(product);
+        }
+
+        @Override
+        public Page<ProductResponse> searchProducts(
+                        ProductFilterRequest request) {
+
+                Pageable pageable = PageRequest.of(
+                                request.getPage(),
+                                request.getSize(),
+                                Sort.by(
+                                                request.getDirection(),
+                                                request.getSortBy()));
+
+                Page<Product> products;
+
+                if (request.getKeyword() != null
+                                && !request.getKeyword().isBlank()) {
+
+                        products = productRepository
+                                        .findByNameContainingIgnoreCase(
+                                                        request.getKeyword(),
+                                                        pageable);
+
+                } else {
+
+                        products = productRepository
+                                        .findAll(pageable);
+                }
+
+                return products.map(this::mapToResponse);
         }
 
         private User getAuthenticatedUser() {

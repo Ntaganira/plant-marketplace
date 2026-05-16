@@ -1,10 +1,13 @@
 package rw.ntaganira.products.service;
 
+import rw.ntaganira.products.dto.ProductFilterRequest;
 import rw.ntaganira.products.dto.ProductRequest;
 import rw.ntaganira.products.dto.ProductResponse;
 import rw.ntaganira.products.dto.VendorProductRequest;
 
 import java.util.List;
+
+import org.springframework.data.domain.Page;
 
 /**
  * --------------------------------------------------------------------
@@ -39,4 +42,6 @@ public interface ProductService {
     void deleteVendorProduct(
             Long productId);
 
+    Page<ProductResponse> searchProducts(
+            ProductFilterRequest request);
 }
