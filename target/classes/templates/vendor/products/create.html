@@ -56,7 +56,15 @@
                                 Thumbnail URL
                             </label>
 
-                            <input type="text" class="form-control" th:field="*{thumbnailUrl}">
+                            <input type="hidden" th:field="*{thumbnailUrl}" id="thumbnailUrl">
+
+                            <input type="file" class="form-control" id="imageUpload" accept="image/*">
+
+                            <div class="mt-3">
+
+                                <img id="previewImage" class="img-fluid rounded d-none" style="max-height: 300px;">
+
+                            </div>
 
                         </div>
 
@@ -88,5 +96,54 @@
     </div>
 
 </div>
+
+<script>
+
+    document
+        .getElementById("imageUpload")
+        .addEventListener("change", async function (e) {
+
+            const file = e.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            const formData = new FormData();
+
+            formData.append("file", file);
+
+            const response = await fetch(
+                "/api/v1/storage/products/upload",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+            const result = await response.json();
+
+            if (result.success) {
+
+                document
+                    .getElementById("thumbnailUrl")
+                    .value =
+                    result.data.fileUrl;
+
+                const preview =
+                    document.getElementById(
+                        "previewImage"
+                    );
+
+                preview.src =
+                    result.data.fileUrl;
+
+                preview.classList.remove(
+                    "d-none"
+                );
+            }
+        });
+
+</script>
 
 </html>

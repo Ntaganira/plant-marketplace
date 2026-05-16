@@ -53,3 +53,14 @@ body {
 
     border-radius: 20px;
 }
+
+#previewImage {
+
+    border-radius: 16px;
+
+    border: 2px dashed #66BB6A;
+
+    padding: 10px;
+
+    background: #F1F8E9;
+}

@@ -55,8 +55,12 @@ public class ApplicationSecurityConfig {
                                                                 "/h2-console/**"
 
                                                 ).permitAll()
-                                                        .requestMatchers("/admin/**")
-                                                        .hasRole("ADMIN")
+                                                .requestMatchers("/admin/**")
+                                                .hasRole("ADMIN")
+                                                .requestMatchers("/api/v1/storage/**")
+                                                .hasAnyRole(
+                                                                "ADMIN",
+                                                                "VENDOR")
                                                 .anyRequest()
                                                 .authenticated())
 

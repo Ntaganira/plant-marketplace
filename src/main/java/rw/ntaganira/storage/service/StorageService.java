@@ -2,29 +2,31 @@ package rw.ntaganira.storage.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import rw.ntaganira.storage.dto.FileUploadResponse;
+
 /**
  * --------------------------------------------------------------------
- * Project      : Rwanda Plant Marketplace
- * File         : StorageService.java
- * Author       : Heritier Ntaganira
- * Company      : NIHO TECHNOLOGIES LTD
+ * Project : Rwanda Plant Marketplace
+ * File : StorageService.java
+ * Author : Heritier Ntaganira
+ * Company : NIHO TECHNOLOGIES LTD
  * Created Date : 2026-05-14
- * Description  : Handles object storage operations
+ * Description : Handles object storage operations
  * --------------------------------------------------------------------
  */
 
 public interface StorageService {
 
-    String uploadProductImage(
-            MultipartFile file
-    );
+        String uploadProductImage(
+                        MultipartFile file);
 
-    String uploadVendorLogo(
-            MultipartFile file
-    );
+        String uploadVendorLogo(
+                        MultipartFile file);
 
-    String uploadProfilePhoto(
-            MultipartFile file
-    );
+        String uploadProfilePhoto(
+                        MultipartFile file);
 
+        FileUploadResponse upload(
+                        MultipartFile file,
+                        String bucket);
 }
