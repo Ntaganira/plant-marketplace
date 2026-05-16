@@ -14,12 +14,12 @@ import rw.ntaganira.security.filter.JwtAuthenticationFilter;
 
 /**
  * --------------------------------------------------------------------
- * Project      : Rwanda Plant Marketplace
- * File         : ApplicationSecurityConfig.java
- * Author       : Heritier Ntaganira
- * Company      : NIHO TECHNOLOGIES LTD
+ * Project : Rwanda Plant Marketplace
+ * File : ApplicationSecurityConfig.java
+ * Author : Heritier Ntaganira
+ * Company : NIHO TECHNOLOGIES LTD
  * Created Date : 2026-05-14
- * Description  : Configures Spring Security authentication and authorization
+ * Description : Configures Spring Security authentication and authorization
  * --------------------------------------------------------------------
  */
 
@@ -28,54 +28,55 @@ import rw.ntaganira.security.filter.JwtAuthenticationFilter;
 @RequiredArgsConstructor
 public class ApplicationSecurityConfig {
 
-    private final JwtAuthenticationFilter jwtAuthenticationFilter;
+        private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http
-    ) throws Exception {
+        @Bean
+        public SecurityFilterChain securityFilterChain(
+                        HttpSecurity http) throws Exception {
 
-        http
-                .csrf(csrf -> csrf.disable())
+                http
+                                .csrf(csrf -> csrf.disable())
 
-                .authorizeHttpRequests(auth -> auth
+                                .authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers(
-                                "/auth/**",
-                                "/h2-console/**",
-                                "/css/**",
-                                "/js/**",
-                                "/images/**"
-                        ).permitAll()
+                                                .requestMatchers(
 
-                        .anyRequest()
-                        .authenticated()
-                )
+                                                                "/",
+                                                                "/products/**",
+                                                                "/vendors/**",
 
-                .sessionManagement(session -> session
-                        .sessionCreationPolicy(
-                                SessionCreationPolicy.STATELESS
-                        )
-                )
+                                                                "/assets/**",
+                                                                "/css/**",
+                                                                "/js/**",
+                                                                "/images/**",
+                                                                "/fonts/**",
 
-                .headers(headers ->
-                        headers.frameOptions(frame -> frame.disable())
-                )
+                                                                "/api/v1/auth/**",
+                                                                "/h2-console/**"
 
-                .addFilterBefore(
-                        jwtAuthenticationFilter,
-                        UsernamePasswordAuthenticationFilter.class
-                );
+                                                ).permitAll()
 
-        return http.build();
-    }
+                                                .anyRequest()
+                                                .authenticated())
 
-    @Bean
-    public AuthenticationManager authenticationManager(
-            AuthenticationConfiguration configuration
-    ) throws Exception {
+                                .sessionManagement(session -> session
+                                                .sessionCreationPolicy(
+                                                                SessionCreationPolicy.STATELESS))
 
-        return configuration.getAuthenticationManager();
-    }
+                                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
+
+                                .addFilterBefore(
+                                                jwtAuthenticationFilter,
+                                                UsernamePasswordAuthenticationFilter.class);
+
+                return http.build();
+        }
+
+        @Bean
+        public AuthenticationManager authenticationManager(
+                        AuthenticationConfiguration configuration) throws Exception {
+
+                return configuration.getAuthenticationManager();
+        }
 
 }

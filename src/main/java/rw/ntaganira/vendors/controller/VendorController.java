@@ -22,7 +22,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/vendors")
+@RequestMapping("/api/v1/vendors")
 @RequiredArgsConstructor
 public class VendorController {
 
