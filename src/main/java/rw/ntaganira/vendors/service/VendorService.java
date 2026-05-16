@@ -1,5 +1,6 @@
 package rw.ntaganira.vendors.service;
 
+import rw.ntaganira.vendors.dto.VendorDashboardResponse;
 import rw.ntaganira.vendors.dto.VendorRequest;
 import rw.ntaganira.vendors.dto.VendorResponse;
 
@@ -31,5 +32,7 @@ public interface VendorService {
     VendorResponse approveVendor(
             Long vendorId
     );
+
+    VendorDashboardResponse getDashboardStats();
 
 }

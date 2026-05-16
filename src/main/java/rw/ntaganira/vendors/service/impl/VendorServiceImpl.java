@@ -3,6 +3,7 @@ package rw.ntaganira.vendors.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rw.ntaganira.shared.exception.ResourceNotFoundException;
+import rw.ntaganira.vendors.dto.VendorDashboardResponse;
 import rw.ntaganira.vendors.dto.VendorRequest;
 import rw.ntaganira.vendors.dto.VendorResponse;
 import rw.ntaganira.vendors.entity.Vendor;
@@ -10,161 +11,191 @@ import rw.ntaganira.vendors.enums.VendorStatus;
 import rw.ntaganira.vendors.repository.VendorRepository;
 import rw.ntaganira.vendors.service.VendorService;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import rw.ntaganira.orders.repository.OrderRepository;
+import rw.ntaganira.products.repository.ProductRepository;
+import rw.ntaganira.users.entity.User;
+import rw.ntaganira.users.repository.UserRepository;
+
 import java.util.List;
 import java.util.UUID;
 
 /**
  * --------------------------------------------------------------------
- * Project      : Rwanda Plant Marketplace
- * File         : VendorServiceImpl.java
- * Author       : Heritier Ntaganira
- * Company      : NIHO TECHNOLOGIES LTD
+ * Project : Rwanda Plant Marketplace
+ * File : VendorServiceImpl.java
+ * Author : Heritier Ntaganira
+ * Company : NIHO TECHNOLOGIES LTD
  * Created Date : 2026-05-14
- * Description  : Implements vendor business operations
+ * Description : Implements vendor business operations
  * --------------------------------------------------------------------
  */
 
 @Service
 @RequiredArgsConstructor
 public class VendorServiceImpl
-        implements VendorService {
+                implements VendorService {
 
-    private final VendorRepository vendorRepository;
+        private final VendorRepository vendorRepository;
 
-    @Override
-    public VendorResponse createVendor(
-            VendorRequest request
-    ) {
+        private final ProductRepository productRepository;
 
-        Vendor vendor = new Vendor();
+        private final OrderRepository orderRepository;
 
-        vendor.setBusinessName(
-                request.getBusinessName()
-        );
+        private final UserRepository userRepository;
 
-        vendor.setSlug(
-                request.getBusinessName()
-                        .toLowerCase()
-                        .replace(" ", "-")
-                        + "-"
-                        + UUID.randomUUID()
-                        .toString()
-                        .substring(0, 5)
-        );
+        @Override
+        public VendorResponse createVendor(
+                        VendorRequest request) {
 
-        vendor.setDescription(
-                request.getDescription()
-        );
+                Vendor vendor = new Vendor();
 
-        vendor.setPhoneNumber(
-                request.getPhoneNumber()
-        );
+                vendor.setBusinessName(
+                                request.getBusinessName());
 
-        vendor.setEmailAddress(
-                request.getEmailAddress()
-        );
+                vendor.setSlug(
+                                request.getBusinessName()
+                                                .toLowerCase()
+                                                .replace(" ", "-")
+                                                + "-"
+                                                + UUID.randomUUID()
+                                                                .toString()
+                                                                .substring(0, 5));
 
-        vendor.setAddress(
-                request.getAddress()
-        );
+                vendor.setDescription(
+                                request.getDescription());
 
-        vendor.setCity(
-                request.getCity()
-        );
+                vendor.setPhoneNumber(
+                                request.getPhoneNumber());
 
-        vendor.setWhatsappNumber(
-                request.getWhatsappNumber()
-        );
+                vendor.setEmailAddress(
+                                request.getEmailAddress());
 
-        vendor.setLogoUrl(
-                request.getLogoUrl()
-        );
+                vendor.setAddress(
+                                request.getAddress());
 
-        vendor.setBannerUrl(
-                request.getBannerUrl()
-        );
+                vendor.setCity(
+                                request.getCity());
 
-        Vendor savedVendor =
-                vendorRepository.save(vendor);
+                vendor.setWhatsappNumber(
+                                request.getWhatsappNumber());
 
-        return mapToResponse(savedVendor);
-    }
+                vendor.setLogoUrl(
+                                request.getLogoUrl());
 
-    @Override
-    public List<VendorResponse> getAllVendors() {
+                vendor.setBannerUrl(
+                                request.getBannerUrl());
 
-        return vendorRepository.findAll()
-                .stream()
-                .map(this::mapToResponse)
-                .toList();
-    }
+                Vendor savedVendor = vendorRepository.save(vendor);
 
-    @Override
-    public VendorResponse getVendorBySlug(
-            String slug
-    ) {
+                return mapToResponse(savedVendor);
+        }
 
-        Vendor vendor = vendorRepository
-                .findBySlug(slug)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Vendor not found"
-                        ));
+        @Override
+        public List<VendorResponse> getAllVendors() {
 
-        return mapToResponse(vendor);
-    }
+                return vendorRepository.findAll()
+                                .stream()
+                                .map(this::mapToResponse)
+                                .toList();
+        }
 
-    @Override
-    public VendorResponse approveVendor(
-            Long vendorId
-    ) {
+        @Override
+        public VendorResponse getVendorBySlug(
+                        String slug) {
 
-        Vendor vendor = vendorRepository
-                .findById(vendorId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException(
-                                "Vendor not found"
-                        ));
+                Vendor vendor = vendorRepository
+                                .findBySlug(slug)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Vendor not found"));
 
-        vendor.setVendorStatus(
-                VendorStatus.APPROVED
-        );
+                return mapToResponse(vendor);
+        }
 
-        return mapToResponse(
-                vendorRepository.save(vendor)
-        );
-    }
+        @Override
+        public VendorResponse approveVendor(
+                        Long vendorId) {
 
-    private VendorResponse mapToResponse(
-            Vendor vendor
-    ) {
+                Vendor vendor = vendorRepository
+                                .findById(vendorId)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Vendor not found"));
 
-        return VendorResponse.builder()
-                .id(vendor.getId())
-                .businessName(
-                        vendor.getBusinessName()
-                )
-                .slug(vendor.getSlug())
-                .description(
-                        vendor.getDescription()
-                )
-                .phoneNumber(
-                        vendor.getPhoneNumber()
-                )
-                .emailAddress(
-                        vendor.getEmailAddress()
-                )
-                .city(vendor.getCity())
-                .country(vendor.getCountry())
-                .logoUrl(vendor.getLogoUrl())
-                .bannerUrl(vendor.getBannerUrl())
-                .whatsappNumber(
-                        vendor.getWhatsappNumber()
-                )
-                .vendorStatus(
-                        vendor.getVendorStatus().name()
-                )
-                .build();
-    }
+                vendor.setVendorStatus(
+                                VendorStatus.APPROVED);
 
+                return mapToResponse(
+                                vendorRepository.save(vendor));
+        }
+
+        @Override
+        public VendorDashboardResponse getDashboardStats() {
+
+                User currentUser = getAuthenticatedUser();
+
+                Vendor vendor = vendorRepository
+                                .findByOwner(currentUser)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Vendor profile not found"));
+
+                return VendorDashboardResponse.builder()
+
+                                .totalProducts(
+                                                productRepository.countByVendor(
+                                                                currentUser))
+
+                                .totalOrders(
+                                                orderRepository.countByVendor(
+                                                                vendor))
+
+                                .lowStockProducts(
+                                                productRepository
+                                                                .countByVendorAndStockQuantityLessThan(
+                                                                                currentUser,
+                                                                                5))
+
+                                .totalInventory(
+                                                productRepository.countByVendor(
+                                                                currentUser))
+
+                                .build();
+        }
+
+        private VendorResponse mapToResponse(
+                        Vendor vendor) {
+
+                return VendorResponse.builder()
+                                .id(vendor.getId())
+                                .businessName(
+                                                vendor.getBusinessName())
+                                .slug(vendor.getSlug())
+                                .description(
+                                                vendor.getDescription())
+                                .phoneNumber(
+                                                vendor.getPhoneNumber())
+                                .emailAddress(
+                                                vendor.getEmailAddress())
+                                .city(vendor.getCity())
+                                .country(vendor.getCountry())
+                                .logoUrl(vendor.getLogoUrl())
+                                .bannerUrl(vendor.getBannerUrl())
+                                .whatsappNumber(
+                                                vendor.getWhatsappNumber())
+                                .vendorStatus(
+                                                vendor.getVendorStatus().name())
+                                .build();
+        }
+
+        private User getAuthenticatedUser() {
+
+                String email = SecurityContextHolder
+                                .getContext()
+                                .getAuthentication()
+                                .getName();
+
+                return userRepository
+                                .findByEmail(email)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "User not found"));
+        }
 }

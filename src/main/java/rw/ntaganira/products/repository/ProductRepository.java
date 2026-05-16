@@ -2,6 +2,7 @@ package rw.ntaganira.products.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import rw.ntaganira.products.entity.Product;
+import rw.ntaganira.users.entity.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,4 +28,13 @@ public interface ProductRepository
     List<Product> findByNameContainingIgnoreCase(String keyword);
 
     long count();
+
+    long countByVendor(User vendor);
+
+    long countByVendorAndStockQuantityLessThan(
+            User vendor,
+            Integer stockQuantity
+    );
+
+    List<Product> findByVendor(User vendor);
 }

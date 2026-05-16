@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/main-layout}">
+
+<div layout:fragment="content">
+
+    <div class="row mb-4">
+
+        <div class="col-12">
+
+            <h2 class="fw-bold">
+                Vendor Dashboard
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <!-- Products -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h5 class="text-muted">
+                        Products
+                    </h5>
+
+                    <h2 class="text-success fw-bold" th:text="${stats.totalProducts}">
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Orders -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h5 class="text-muted">
+                        Orders
+                    </h5>
+
+                    <h2 class="text-primary fw-bold" th:text="${stats.totalOrders}">
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Low Stock -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h5 class="text-muted">
+                        Low Stock
+                    </h5>
+
+                    <h2 class="text-danger fw-bold" th:text="${stats.lowStockProducts}">
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Inventory -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h5 class="text-muted">
+                        Inventory
+                    </h5>
+
+                    <h2 class="text-dark fw-bold" th:text="${stats.totalInventory}">
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</html>

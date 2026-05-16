@@ -1,4 +1,8 @@
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\admin\controller\AdminDashboardController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\admin\controller\DashboardController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\admin\dto\DashboardStatsResponse.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\admin\service\AdminDashboardService.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\admin\service\impl\AdminDashboardServiceImpl.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\controller\AuthController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\AuthResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\auth\dto\LoginRequest.java
@@ -16,6 +20,7 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\home\control
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\Order.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\entity\OrderItem.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\enums\OrderStatus.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\repository\OrderRepository.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\orders\utils\WhatsAppMessageBuilder.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\PlantMarketplaceApplication.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\controller\ProductController.java
@@ -28,6 +33,7 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\ser
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\products\service\ProductService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\ApplicationSecurityConfig.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\SecurityBeansConfig.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\config\SecurityWebConfig.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\filter\JwtAuthenticationFilter.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\jwt\JwtService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\security\service\CustomUserDetailsService.java
@@ -44,11 +50,19 @@ C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\storage\cont
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\storage\service\impl\StorageServiceImpl.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\storage\service\StorageService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\storage\validator\FileValidator.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\controller\UserController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\dto\ChangePasswordRequest.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\dto\UpdateProfileRequest.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\dto\UserProfileResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\entity\User.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\enums\UserRole.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\repository\UserRepository.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\service\impl\UserServiceImpl.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\users\service\UserService.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\controller\VendorController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\controller\VendorDashboardController.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\controller\VendorStorefrontController.java
+C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\dto\VendorDashboardResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\dto\VendorRequest.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\dto\VendorResponse.java
 C:\Users\ntaga\Desktop\plant-marketplace\src\main\java\rw\ntaganira\vendors\entity\Vendor.java

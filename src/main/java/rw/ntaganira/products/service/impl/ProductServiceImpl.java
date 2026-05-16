@@ -9,7 +9,13 @@ import rw.ntaganira.products.dto.ProductResponse;
 import rw.ntaganira.products.entity.Product;
 import rw.ntaganira.products.repository.ProductRepository;
 import rw.ntaganira.products.service.ProductService;
+import rw.ntaganira.shared.exception.BadRequestException;
 import rw.ntaganira.shared.exception.ResourceNotFoundException;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import rw.ntaganira.products.dto.VendorProductRequest;
+import rw.ntaganira.users.entity.User;
+import rw.ntaganira.users.repository.UserRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,6 +38,8 @@ public class ProductServiceImpl implements ProductService {
         private final ProductRepository productRepository;
 
         private final CategoryRepository categoryRepository;
+
+        private final UserRepository userRepository;
 
         @Override
         public ProductResponse createProduct(ProductRequest request) {
@@ -106,6 +114,152 @@ public class ProductServiceImpl implements ProductService {
                                 .stream()
                                 .map(this::mapToResponse)
                                 .toList();
+        }
+
+        @Override
+        public List<ProductResponse> getVendorProducts() {
+
+                User vendor = getAuthenticatedUser();
+
+                return productRepository
+                                .findByVendor(vendor)
+                                .stream()
+                                .map(this::mapToResponse)
+                                .toList();
+        }
+
+        @Override
+        public ProductResponse createVendorProduct(
+                        VendorProductRequest request) {
+
+                User vendor = getAuthenticatedUser();
+
+                Category category = categoryRepository
+                                .findById(request.getCategoryId())
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Category not found"));
+
+                Product product = new Product();
+
+                product.setName(request.getName());
+
+                product.setSlug(
+                                request.getName()
+                                                .toLowerCase()
+                                                .replace(" ", "-")
+                                                + "-"
+                                                + UUID.randomUUID()
+                                                                .toString()
+                                                                .substring(0, 5));
+
+                product.setDescription(
+                                request.getDescription());
+
+                product.setShortDescription(
+                                request.getShortDescription());
+
+                product.setPrice(request.getPrice());
+
+                product.setDiscountPrice(
+                                request.getDiscountPrice());
+
+                product.setStockQuantity(
+                                request.getStockQuantity());
+
+                product.setThumbnailUrl(
+                                request.getThumbnailUrl());
+
+                product.setCategory(category);
+
+                product.setVendor(vendor);
+
+                Product savedProduct = productRepository.save(product);
+
+                return mapToResponse(savedProduct);
+        }
+
+        @Override
+        public ProductResponse updateVendorProduct(
+                        Long productId,
+                        VendorProductRequest request) {
+
+                User vendor = getAuthenticatedUser();
+
+                Product product = productRepository
+                                .findById(productId)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Product not found"));
+
+                if (!product.getVendor().getId()
+                                .equals(vendor.getId())) {
+
+                        throw new BadRequestException(
+                                        "Unauthorized product access");
+                }
+
+                Category category = categoryRepository
+                                .findById(request.getCategoryId())
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Category not found"));
+
+                product.setName(request.getName());
+
+                product.setDescription(
+                                request.getDescription());
+
+                product.setShortDescription(
+                                request.getShortDescription());
+
+                product.setPrice(request.getPrice());
+
+                product.setDiscountPrice(
+                                request.getDiscountPrice());
+
+                product.setStockQuantity(
+                                request.getStockQuantity());
+
+                product.setThumbnailUrl(
+                                request.getThumbnailUrl());
+
+                product.setCategory(category);
+
+                Product updatedProduct = productRepository.save(product);
+
+                return mapToResponse(updatedProduct);
+        }
+
+        @Override
+        public void deleteVendorProduct(
+                        Long productId) {
+
+                User vendor = getAuthenticatedUser();
+
+                Product product = productRepository
+                                .findById(productId)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "Product not found"));
+
+                if (!product.getVendor().getId()
+                                .equals(vendor.getId())) {
+
+                        throw new BadRequestException(
+                                        "Unauthorized product access");
+                }
+
+                productRepository.delete(product);
+        }
+
+        private User getAuthenticatedUser() {
+
+                String email = SecurityContextHolder
+                                .getContext()
+                                .getAuthentication()
+                                .getName();
+
+                return userRepository
+                                .findByEmail(email)
+                                .orElseThrow(() -> new ResourceNotFoundException(
+                                                "User not found"));
         }
 
         private ProductResponse mapToResponse(

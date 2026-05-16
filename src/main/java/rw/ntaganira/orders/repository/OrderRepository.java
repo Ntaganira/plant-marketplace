@@ -3,6 +3,7 @@ package rw.ntaganira.orders.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import rw.ntaganira.orders.entity.Order;
+import rw.ntaganira.vendors.entity.Vendor;
 
 import java.math.BigDecimal;
 
@@ -26,4 +27,5 @@ public interface OrderRepository
             """)
     BigDecimal getTotalRevenue();
 
+    long countByVendor(Vendor vendor);
 }
