@@ -96,6 +96,16 @@
 
                         </button>
 
+                        <form th:action="@{/wishlist/{id}(id=${product.id})}" method="post">
+
+                            <button class="btn btn-outline-danger w-100">
+
+                                ❤ Add To Wishlist
+
+                            </button>
+
+                        </form>
+
                     </div>
 
                 </div>
